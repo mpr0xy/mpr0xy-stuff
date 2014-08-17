@@ -1,0 +1,19 @@
+{
+  "name": "coding",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "MD5": "^1.2.1",
+    "node-tesseract": "^0.2.6",
+    "request": "^2.40.0",
+    "sleep": "^1.1.8",
+    "through2": "^0.6.1",
+    "tough-cookie": "^0.12.1"
+  }
+}
