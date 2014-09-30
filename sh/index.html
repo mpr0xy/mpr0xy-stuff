@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>创益跑14天进化角逐赛</title>
+	<meta name="description" content="" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	<script type="text/javascript">var MEDIA_URL = "http://static.codoon.com";var media = 'http://static.codoon.com';</script>
+	<script type="text/javascript" src="http://static.codoon.com/js/common/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="./js/jgestures.js"></script>
+	<script type="text/javascript" src="./js/imgScroll.js"></script>
+	<style type="text/css">
+		html,body {
+			_width: 100%;
+			background-color: #FFFFFF;
+			font-family: "82F979CE3DE2D9ED1 微软雅黑";
+		}
+		body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, p, form, fieldset, legend, input, textarea, blockquote, th, td {
+			margin: 0;
+			padding: 0;
+		}
+		a {
+			outline: none;
+		}
+		a {
+			text-decoration: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		fieldset, img {
+			border: 0;
+		}
+		address, caption, cite, code, dfn, px, strong, th, var {
+			font-style: normal;
+			font-weight: normal;
+		}
+		li {
+			list-style: none;
+		}
+		caption, th {
+			text-align: left;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-size: 100%;
+			font-weight: normal;
+		}
+		q: before, q: after {
+			content: '';
+		}
+		abbr, acronym {
+			border: 0;
+			font-variant: normal;
+		}
+		sup {
+			/*vertical-align: text-top;*/
+		}
+		sub {
+			vertical-align: text-bottom;
+		}
+		input, textarea, select {
+			font-family: inherit;
+			font-size: inherit;
+			font-weight: inherit;
+		}
+		legend {
+			color: #000;
+		}
+		textarea {
+			overflow: auto;
+		}
+		div {
+			text-align: left;
+			line-height: 160%;
+		}
+		input,select {
+			vertical-align: middle;
+		}
+		button, input[type="button"], input[type="reset"], input[type="submit"] {
+			cursor: pointer;
+			-webkit-appearance: button;
+		}
+		.blank0 {
+			height: 0;
+			clear: both;
+			font-size: 0px;
+			overflow: hidden;
+		}
+		.blank5 {
+			height: 5px;
+			clear: both;
+			font-size: 0px;
+			overflow: hidden;
+		}
+		.blank10 {
+			height: 10px;
+			clear: both;
+			font-size: 0px;
+			overflow: hidden;
+		}
+		.blank20 {
+			height: 20px;
+			clear: both;
+			font-size: 0px;
+			overflow: hidden;
+		}
+		.f10 {
+			font-size: 10px!important;
+		}
+		.f12 {
+			font-size: 12px!important;
+		}
+		.f14 {
+			font-size: 14px!important;
+		}
+		.f16 {
+			font-size: 16px!important;
+		}
+		.line120 {
+			line-height: 120%;
+		}
+		.line100 {
+			line-height: 100%;
+		}
+		.clearfix: after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+		.fb {
+			font-weight: bold
+		}
+		.tc {
+			text-align: center;
+		}
+		.fl {
+			float: left;
+		}
+		.fr {
+			float: right;
+		}
+		.pr {
+			position: relative;
+		}
+		* html .clearfix {
+			height: 1%;
+		}
+		.sZoom {
+			-webkit-animation: DivZoom 0.5s ease-in-out }
+		@-webkit-keyframes DivZoom {
+			0% {
+			-webkit-transform: scale(0.01) ;
+			opacity: 0.2
+		}
+		60% {
+			-webkit-transform: scale(1.05);
+			opacity: 0.5
+		}
+		80% {
+			-webkit-transform: scale(0.95);
+			opacity: 1 }
+		100% {
+			-webkit-transform: scale(1.00);
+			opacity: 1 }
+		} .z {
+			background: black;
+			border: medium none;
+			cursor: default;
+			filter: Alpha(Opacity=60);
+			display: none;
+			height: 100%;
+			left: 0;
+			margin: 0;
+			opacity: 0.6;
+			padding: 0;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 998;
+		}
+	</style>
+	
+	<style type="text/css">
+		.container {
+			width: 320px;
+			margin: 0 auto;
+		}
+		.mc {
+			margin: 0 auto;
+		}
+		.header-img {
+			width: 320px;
+			height: 363px;
+			background: url("./image/header.jpg") no-repeat;
+			background-size: 320px 363px;
+		}
+		.user-info {
+			position: relative;
+			width: 320px;
+			height: 327px;
+			background-color: rgb(204, 174, 78);
+		}
+		.user-info-header {
+			width: 320px;
+			height: 55px;
+			background-color: rgb(214, 190, 102);
+			position: relative;
+		}
+		.user-avatar {
+			position: absolute;
+			top: -18px;
+			left: 18px;
+			width: 91px;
+			height: 91px;
+			background-color: #ffffff;
+		}
+		.user-avatar:after{
+			content: "";
+			width: 0;
+			height: 0;
+			position: absolute;
+			bottom: -9px;
+			left: 42px;
+			border-style: solid;
+			border-width: 5px;
+			border-color: #ffffff transparent transparent;
+		}
+		.user-avatar img {
+			width: 79px;
+			height: 79px;
+			margin: 6px;
+		}
+		.user-name {
+			position: absolute;
+			right: 18px;
+			color: #fff;
+			line-height: 50px;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.sns {
+			position: absolute;
+			right: 18px;
+			height: 18px;
+			width: 46px;
+			bottom: -10px;
+			background-color: #fff;
+			font-size: 8px;
+			text-align: center;
+			color: #ccae4e;
+			line-height: 18px;
+		}
+		.sns:after {
+			content: "";
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: -9px;
+			left: 20px;
+			border-style: solid;
+			border-width: 5px;
+			border-color: transparent transparent #ffffff;
+		}
+		.user-data {
+			text-align: center;
+			margin: 10px;
+		}
+		.user-data-item {
+			float: left;
+			width: 33%;
+			height: 56px;
+			text-align: center;
+			font-size: 12px;
+			font-weight: bold;
+			color: #fff;
+			line-height: 25px;
+		}
+		.grade-img {
+			position: relative;
+			top: -2px;
+			width: 47px;
+			height: 25px;
+			vertical-align: middle;
+		}
+		.grade {
+			font-size: 22px;
+		}
+		.mileage {
+			position: relative;
+			left: 8px;
+			font-size: 22px;
+		}
+		.rank {
+			position: relative;
+			left: 13px;
+			font-size: 22px;
+		}
+		.data-sup-mileage {
+			position: relative;
+			top: -10px;
+			left: 6px;
+			font-size: 10px;
+		}
+		.data-sup-rank {
+			position: relative;
+			top: -10px;
+			left: 10px;
+			font-size: 10px;
+		}
+
+		.sentence div{
+			color: #ffffff;
+			font-size: 11px;
+			width: 162px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.horizontal-back {
+			display: inline-block;
+			width: 16px;
+			height: 2px;
+			background-color: #ffffff;
+		}
+		.kol-slide {
+			position: absolute;
+			width: 290px;
+			height: 102px;
+			bottom: 5px;
+			left: 18px;
+		}
+		.kol {
+			position: relative;
+/*			overflow-x: scroll;
+			overflow-y: hidden; */
+			overflow: hidden;
+			width: 271px;
+			height: 74px;
+			top: 5px;
+			line-height: 1.2em;
+		}
+		#kol-ul {
+			position: relative;
+		}
+		.kol2 {
+			left: 271px; 
+		}
+		.kol-item {
+			display: block;
+			position: absolute;
+			width: 271px;
+			height: 74px;
+		}
+		.kol-avatar {
+			box-sizing: border-box;
+			float: left;
+			width: 74px;
+			height: 74px;
+			background-color: #ffffff;
+			padding: 6px;
+		}
+		.kol-avatar:after {
+			content: "";
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 34px;
+			left: 74px;
+			border-style: solid;
+			border-width: 5px;
+			border-color: transparent transparent transparent #ffffff  ;
+		}
+		.kol-avatar img {
+			width: 62px;
+			height: 62px;
+		}
+		.kol-content {
+			position: relative;
+			color: #ffffff;
+			font-size: 15px;
+			top: 5px;
+			margin-left: 7px;
+			line-height: 1.5em;
+			width: 190px;
+			display: inline-block;
+		}
+		.kol-who {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			font-size: 12px;
+			color: #886800;
+			line-height: 13px;
+		}
+		#kol-ico-ul {
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+		}
+		#kol-ico-ul li {
+			display: inline-block;
+			height: 5px;
+			width: 5px;
+			border-radius: 50%;
+			background-color: #d6be66;
+		}
+		#kol-ico-ul .on {
+			background-color: #ffffff;
+		}
+
+		.upgrade {
+			width: 320px;
+			height: 297px;
+			margin: 0 auto;
+			text-align: center;
+			line-height: 1.3em;
+		}
+		.upgrade .title {
+			color: #d6be66;
+			font-size: 19px;
+		}
+		.upgrade .title2 {
+			color: #737373;
+			font-size: 9px;
+			line-height: 1.3em;
+		}
+		.upgrade .text {
+			margin: 0 5%;
+			color: #737373;
+			font-size: 7px;
+			line-height: 1.3em;
+		}
+
+		.no-ico {
+			position: relative;
+			top: -3px;
+			display: inline-block;
+			width: 30px;
+			height: 20px;
+			color: #ffffff;
+			background-color: #d6be66;
+			font-size: 12px;
+			margin-right: 15px;
+		}
+		.no-ico-after {
+			content: "";
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 0.1px;
+			left: 30px;
+			border-style: solid;
+			border-width: 10px;
+			border-color: transparent transparent transparent #d6be66;
+		}
+
+		.upgrade-1 {
+			width: 53px;
+			height: 71px;
+		}
+		.upgrade-img {
+			position: relative;
+			left: 29px;
+			width: 270px;
+			height: 182px;
+			background: url("./image/upgrade_all.jpg") no-repeat;
+			background-size: 270px 182px;
+		}
+		.upgrade-img img {
+			position: absolute;
+			display: none;
+		}
+		#upgrade-02 {
+			display: block;
+			width: 47px;
+			height: 70px;
+			top: 1px;
+			left: 66px;
+		}
+		#upgrade-03 {
+			width: 47px;
+			height: 70px;
+			top: 0.99px;
+			left: 110px;
+		}
+
+		#upgrade-04 {
+			width: 52px;
+			height: 70px;
+			top: 0.99px;
+			left: 151px;
+		}
+		#upgrade-05 {
+			width: 52px;
+			height: 70px;
+			top: 0.99px;
+			left: 194px;
+		}
+		#upgrade-06 {
+			width: 52.5px;
+			height: 71.5px;
+			top: 94px;
+			left: 20px;
+		}
+		#upgrade-07 {
+			width: 47.5px;
+			height: 71.5px;
+			top: 94px;
+			left: 66px;
+		}
+		#upgrade-08 {
+			width: 45.5px;
+			height: 46.5px;
+			top: 119px;
+			left: 111px;
+		}
+		#upgrade-09 {
+			width: 47px;
+			height: 49px;
+			top: 116.5px;
+			left: 154px;
+			
+		}
+		#upgrade-10 {
+			width: 51.5px;
+			height: 51px;
+			top: 114.6px;
+			left: 194px;
+		}
+
+		.mood {
+			width: 320px;
+			height: 256px;
+		}
+		.mood img {
+			width: 320px;
+			height: 256px;
+		}
+
+		.prize {
+			width: 320px;
+			height: 337px;
+		}
+		.prize-silder {
+			background-color: #ccae4e;
+			position: relative;
+			overflow: hidden;
+			width: 284px;
+			margin: 0 auto;
+			height: 152px;
+		}
+		#prize-silder-ul {
+			position: relative;
+			width: 284px;
+			height: 127px;
+			font-size: 0;
+		}
+		.prize-img {
+			width: 285px;
+			height: 127px;
+		}
+		#prize-silder-ul li {
+			display: inline;
+			float: left;
+			width: 285px;
+			height: 127px;
+		}
+		.prize-footer {
+			position: relative;
+			width: 269px;
+			margin: 0 8px;
+			font-size: 8px;
+		}
+		#prize-silder-ico {
+			float: right;
+			line-height: 25px;
+		}
+		#prize-silder-ico li {
+			display: inline-block;
+			height: 5px;
+			width: 5px;
+			border-radius: 50%;
+			background-color: #d6be66;
+		}
+		#prize-silder-ico .on {
+			background-color: #ffffff;
+		}
+		.prize-text {
+			float: left;
+			line-height: 25px;
+			color: #ffffff;
+		}
+		.prize_end {
+			display: block;
+			width: 285px;
+			height: 184px;
+			margin: 0 auto;
+		}
+		.top {
+			width: 320px;
+			height: 431px;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			
+			<div class="header-img">
+			</div>
+
+			<div class="user-info">
+				<div class="user-info-header">
+
+					<div class="user-avatar">
+						<img src="./image/avatar.jpg" />
+					</div>
+					
+					<div class="user-name">
+						<span>大聚会张亮的腿</span>
+					</div>
+					
+					<a href="http://weibo.com" class="sns">分享成绩</a> 
+				</div>
+
+				<div class="blank20"></div>
+				<div class="blank20"></div>
+				<div class="user-data">
+					<div class="user-data-item">
+						<span class="grade"><img class="grade-img" src="./image/rank1.png" /></span>
+						<br/>
+						<span>个人等级</span>
+					</div>
+					<div class="user-data-item">
+						<span class="mileage">7.54</span>
+						<span class="data-sup-mileage">KM</span>
+						<br/>
+						<span>个人挑战里程</span>
+					</div>
+					<div class="user-data-item">
+						<span class="rank">025</span>
+						<span class="data-sup-rank">NO.</span>
+						</br>
+						<span>个人名次</span>
+					</div>
+				</div>
+
+				<div class="blank5"></div>
+				<div class="sentence">
+					<div>
+						<span class="horizontal-back"></span>
+					</div>
+					<div class="blank5"></div>
+					<div>
+						<span class="sentence-content">挑战晋级，得到崭新的机会。</span>
+					</div>
+				</div>
+
+				<div class="blank10"></div>
+				<div class="kol-slide">
+					
+					<!-- kol start -->
+					<div class="kol">
+						<ul id="kol-ul">
+							<li class="kol-item kol1">
+								<div class="kol-avatar">
+								<img src="./image/avatar.jpg"/>
+								</div>
+								<p class="kol-content">
+									“为足球欢呼的你，也要为健康欢呼！向健康，开跑！”
+								</p>
+								<span class="kol-who">
+									贺炜 足球主播
+								</span>
+							</li>
+							
+							<li class="kol-item kol2">
+								<div class="kol-avatar">
+									<img src="./image/avatar.jpg"/>
+								</div>
+								<span class="kol-content">
+									“为巨星加油的你，也要为自己加油！向健康，开跑！”
+								</span>
+								<span class="kol-who">
+									杨健 篮球主播
+								</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="kol-ico">
+			            <ul id="kol-ico-ul">
+			                <li class="on"></li>
+			                <li></li>
+			            </ul>
+			        </div>
+			        <!-- kol end -->
+
+				</div>
+			</div> 
+		</div>
+
+		<div class="upgrade">
+			<div class="blank20"></div>
+			<div class="blank10"></div>
+			<p class="title"><span class="no-ico">No.1<i class="no-ico-after"></i></span>进级跑</p>
+			<p class="title2">进化等级表</p>
+			<p class="text">出发即是成功！只要累积里程就能进化为更高等级，得到神秘抽奖机会，更有终级大奖等着你。</p>
+
+			<div class="blank10"></div>
+			<div class="upgrade-img">
+				<img id="upgrade-02" src="./image/upgrade02.png" />
+				<img id="upgrade-03" src="./image/upgrade03.png" />
+				<img id="upgrade-04" src="./image/upgrade04.png" />
+				<img id="upgrade-05" src="./image/upgrade05.png" />
+				<img id="upgrade-06" src="./image/upgrade06.png" />
+				<img id="upgrade-07" src="./image/upgrade07.png" />
+				<img id="upgrade-08" src="./image/upgrade08.png" />
+				<img id="upgrade-09" src="./image/upgrade09.png" />
+				<img id="upgrade-10" src="./image/upgrade10.png" />
+			</div>
+		</div>
+
+
+		<div class="mood">
+			<img src="./image/mood.jpg" />
+		</div>
+
+
+		<div class="prize">
+			<div class="prize-silder">
+				<ul id="prize-silder-ul">
+					<li><img class="prize-img" src="./image/prize01.png" /></li>
+					<li><img class="prize-img" src="./image/prize02.png" /></li>
+					<li><img class="prize-img" src="./image/prize03.png" /></li>
+					<li><img class="prize-img" src="./image/prize04.png" /></li>
+				</ul>
+				<div class="prize-footer">
+					<ul id="prize-silder-ico">
+						<li class="on"></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<p class="prize-text">准备好了么？即刻开跑马拉松，用健康定义王者。</p>
+				</div>
+			</div>
+			<img class="prize_end" src="./image/prize_end.png">
+		</div>
+
+		
+		<div class="top">
+
+		</div>
+
+	</div>
+	<script type="text/javascript">
+	$(function() {
+		var kolSlider=new mobileImgScroll();
+		kolSlider.init({
+			Touch:"#kol-ul",
+			TouchIco:"#kol-ico-ul",
+			Width:271,
+			Current:"on",
+			isAuto:true,
+			offSet:5000
+		});
+
+		var prizeSlider=new mobileImgScroll();
+		prizeSlider.init({
+			Touch:"#prize-silder-ul",
+			TouchIco:"#prize-silder-ico",
+			Width:285,
+			Current:"on",
+			isAuto:true,
+			offSet:5000
+		});
+	})
+	</script>
+</body>
+</html>
