@@ -1,0 +1,369 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+    mp-calender {
+      display: none;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, 0.6);
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    mp-calender * {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    mp-calender p {
+      line-height: 3;
+    }
+    mp-calender .calender-main {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3D(-50%, -50%, 0);
+      -webkit-transform: translate3D(-50%, -50%, 0);
+      background-color: #ffffff;
+      width: 70%;
+      border-radius: 10px;
+      color: #f1a243;
+    }
+    mp-calender .calender-main ul, mp-calender .calender-main li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    mp-calender .calender-main ul {
+      display: block;
+      font-size: 0px;
+      padding-bottom: 10px;
+    }
+    mp-calender .calender-item {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 29.3%;
+      margin: 2% !important;
+      font-size: 18px;
+      text-align: center;
+    }
+    mp-calender .calender-value {
+      font-size: 20px;
+    }
+    mp-calender button {
+      width: 60px;
+      line-height: 2.4;
+      background-color: #6cbb52;
+      border: none;
+      color: #ffffff;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    mp-calender .calender-buttons {
+      width: 100%;
+      font-size: 0px;
+      text-align: center;
+      padding: 10px 0;
+      background-color: #E6E6E6;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    mp-calender .calender-buttons button {
+      width: 45%;
+      margin: 2%;
+      font-size: 16px;
+      line-height: 2;
+    }
+    mp-calender button.select {
+      background-color: #467D21 !important;
+    }
+    mp-calender .calender-buttons button:first-child {
+      background-color: #c0c0c0;
+    }
+    .input {
+      background-color: #ffffff;
+      border: 1px solid #cecece;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div>
+  <label>生日</label>
+  <input class="input" type="text" />
+</div>
+<mp-calender>
+  <dvi class="calender-main">
+    <ul>
+      <li class="calender-item">
+        <p class="calender-desc">年</p>
+        <button data-name="year+">+</button>
+        <p class="calender-value year"></p>
+        <button data-name="year-">-</button>
+      </li>
+      <li class="calender-item">
+        <p class="calender-desc">月</p>
+        <button data-name="month+">+</button>
+        <p class="calender-value month"></p>
+        <button data-name="month-">-</button>
+      </li>
+      <li class="calender-item">
+        <p class="calender-desc">日</p>
+        <button data-name="day+">+</button>
+        <p class="calender-value day"></p>
+        <button data-name="day-">-</button>
+      </li>
+    </ul>
+    <div class="calender-buttons">
+      <button class="calender-cancel">取消</button>
+      <button class="calender-sure">确定</button>
+    </div>
+  </dvi>
+</mp-calender>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+  var mpCalenderComponent = {
+    isRun: false,
+    calender: {
+      year: 0,
+      month: 0,
+      day: 0
+    },
+    callback: null,
+    run: function(options, callback) {
+      $("mp-calender").show();
+      if (!this.isRun) {
+        this.bindEvent();
+      }
+      if (!options) {
+        this.calender = this.getNow();
+      } else {
+        this.calender = options
+      }
+      this.setDefault(this.calender);
+      this.isRun = true;
+      this.callback = callback;
+    },
+    getNow: function() {
+      var now = new Date();
+      return {
+        year: now.getFullYear(),
+        month: now.getMonth() + 1,
+        day: now.getDate()
+      }
+    },
+    setDefault: function(options) {
+      $("mp-calender .year").text(options.year);
+      $("mp-calender .month").text(options.month);
+      $("mp-calender .day").text(options.day);
+    },
+    isLeapYear: function(year) {
+      if (year % 4 === 0 || year % 400 === 0) {
+        return true;
+      }
+      return false;
+    },
+    bindEvent: function() {
+      var self = this;
+      var touchStart = false;
+      var touchEnd = false;
+      var touchTimer = null;
+      var startTouchStart = false;
+
+      $("mp-calender .calender-cancel").on("click", function() {
+        $("mp-calender").hide();
+      });
+
+      $("mp-calender .calender-sure").on("click", function() {
+        $("mp-calender").hide();
+        if (self.callback) {
+          self.callback(self.calender);
+        }
+      });
+
+      $("mp-calender").on("click", function(event) {
+        clearInterval(touchTimer);
+        touchTimer = null;
+        if (touchStart) {
+          return;
+        }
+        $(event.target).addClass("select");
+        setTimeout(function() {
+          $(event.target).removeClass("select");
+        }, 100);
+
+        var action = $(event.target).data("name");
+        self.actionObject[action](self.calender);
+        self.setDefault(self.calender);
+      });
+
+      $("mp-calender").on("touchstart", function(event) {
+        if (startTouchStart) {
+          return;
+        }
+        setTimeout(function() {
+          startTouchStart = false;
+          if (touchEnd) {
+            touchEnd = false;
+            return;
+          }
+          touchStart = true;
+          $(event.target).addClass("select");
+          if (touchTimer) {
+            clearInterval(touchTimer);
+            touchTimer = null;
+          }
+          touchTimer = setInterval(function() {
+            var action = $(event.target).data("name");
+            self.actionObject[action](self.calender);
+            self.setDefault(self.calender);
+          }, 100);
+        }, 500);
+        startTouchStart = true;
+      });
+
+      $("mp-calender").on("touchend", function(event) {
+        touchEnd = true;
+        setTimeout(function() {
+          touchStart = false;
+        }, 100);
+        $(event.target).removeClass("select");
+        clearInterval(touchTimer);
+        touchTimer = null;
+      });
+    },
+    actionObject: {
+      'year+': function(calender) {
+        if (mpCalenderComponent.isLeapYear(calender.year)) {
+          if (calender.month === 2 && calender.day === 29) {
+            calender.day = 28;
+          }
+        }
+        calender.year++;
+      },
+      'year-': function(calender) {
+        if (mpCalenderComponent.isLeapYear(calender.year)) {
+          if (calender.month === 2 && calender.day === 29) {
+            calender.day = 28;
+          }
+        }
+        calender.year--;
+      },
+      'month+': function(calender) {
+        if (mpCalenderComponent.isLeapYear(calender.year)) {
+          if (calender.month === 2 && calender.day >= 29) {
+            calender.day = 28;
+          }
+        }
+        calender.month = (calender.month % 12) + 1;
+        if (calender.day > mpCalenderComponent.dayObject[calender.month]) {
+          calender.day = mpCalenderComponent.dayObject[calender.month]
+        }
+      },
+      'month-': function(calender) {
+        if (mpCalenderComponent.isLeapYear(calender.year)) {
+          if (calender.month === 2 && calender.day >= 29) {
+            calender.day = 28;
+          }
+        }
+        calender.month = calender.month - 1;
+        if (calender.month <= 0) {
+          calender.month = 12;
+        }
+        if (calender.day > mpCalenderComponent.dayObject[calender.month]) {
+          calender.day = mpCalenderComponent.dayObject[calender.month]
+        }
+      },
+      'day+': function(calender) {
+        if (mpCalenderComponent.isLeapYear(calender.year)) {
+          if (calender.month === 2 && calender.day === 28) {
+            calender.day = 29;
+          } else if (calender.month === 2 && calender.day === 29) {
+            calender.day = 1;
+          } else {
+            calender.day = calender.day % mpCalenderComponent.dayObject[calender.month] + 1;
+          }
+        } else {
+          calender.day = calender.day % mpCalenderComponent.dayObject[calender.month] + 1;
+        }
+      },
+      'day-': function(calender) {
+        if (mpCalenderComponent.isLeapYear(calender.year)) {
+          if (calender.month === 2 && calender.day === 1) {
+            calender.day = 29;
+          } else if (calender.month === 2 && calender.day === 29) {
+            calender.day = 28;
+          } else {
+            calender.day = calender.day - 1;
+            if (calender.day <= 0) {
+              calender.day = mpCalenderComponent.dayObject[calender.month]
+            }
+          }
+        } else {
+          calender.day = calender.day - 1;
+          if (calender.day <= 0) {
+            calender.day = mpCalenderComponent.dayObject[calender.month]
+          }
+        }
+      }
+    },
+    dayObject: {
+      '1': 31,
+      '2': 28,
+      '3': 31,
+      '4': 30,
+      '5': 31,
+      '6': 30,
+      '7': 31,
+      '8': 31,
+      '9': 30,
+      '10': 31,
+      '11': 30,
+      '12': 31
+    },
+    formatToString: function(calender) {
+      return calender.year + '-' + calender.month + '-' + calender.day;
+    },
+    formatToObject: function(str) {
+      var array = str.split("-");
+      return {
+        year: array[0],
+        month: array[1],
+        day: array[2]
+      }
+    }
+  }
+  // mpCalenderComponent.run();
+  $(".input").on("touchstart", function() {
+    var calender = null;
+    if ($(".input").val() !== '') {
+      calender = mpCalenderComponent.formatToObject($(".input").val());
+    }
+    mpCalenderComponent.run(calender, function(calender) {
+      $(".input").val(mpCalenderComponent.formatToString(calender));
+    });
+  });
+</script>
+</body>
+</html>
