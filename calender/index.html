@@ -355,7 +355,7 @@
     }
   }
   // mpCalenderComponent.run();
-  $(".input").on("touchstart", function() {
+  $(".input").on("touchstart mousedown", function() {
     var calender = null;
     if ($(".input").val() !== '') {
       calender = mpCalenderComponent.formatToObject($(".input").val());
