@@ -96,6 +96,7 @@
           }
         });
         if (typeof currentValue == "object") {
+          // 这段代码应该可以和上面的代码合并成一个代码
           if (observe.isArray(currentValue)) {
             this.mock(currentValue);
             if (currentValue.length === 0) {
