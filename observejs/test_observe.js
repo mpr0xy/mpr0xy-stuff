@@ -20,3 +20,32 @@ p.init = function() {
 
 
 var testObserve = new Observe('test', 'type');
+
+
+// 模拟set get
+
+var testArray = [1,2,3,4]
+
+for (var key in testArray) {
+  var val = testArray[key];
+  (function(_key, _val) {
+    Object.defineProperty(testArray, _key, {
+      enumerable: true,
+      configurable: true,
+      get: function() {
+        console.log('get ' + _key);
+        return _val;
+      },
+      set: function (newVal) {
+        if (newVal === _val) {
+          return;
+        }
+        console.log('new val ' + newVal);
+      }
+    });
+  })(key, val)
+}
+
+testArray[1] = '234';
+testArray.push(12);
+console.log("testArray " + testArray[0]);
