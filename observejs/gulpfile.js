@@ -13,3 +13,8 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./build/'))
 });
 
+gulp.task('watch', function() {
+  return watch('src/**/*', function() {
+    gulp.start(['build']);
+  });
+});
